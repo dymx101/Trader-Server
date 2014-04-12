@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="trader" default="deploy" basedir=".">
+	<property file="${basedir}/build.properties"/>
+	
+	<!-- =================================================================== -->
+	<!-- 清除临时文件-->
+	<!-- =================================================================== -->
+	<target name="clean">
+		<delete dir="${target.dir}"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${target.dir}" />
+		<!--   classpath -->
+		<path id="classpath">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</target>
+	
+	<!-- =================================================================== -->
+	<!-- 编译源文件-->
+	<!-- =================================================================== -->
+	<target name="build" depends="init">
+		<mkdir dir="${compile.dir}" />
+		<javac srcdir="${src.dir}" destdir="${compile.dir}" debug="${debug}" optimize="${optimize}">
+			<classpath refid="classpath" />
+		</javac>
+		<copy todir="${compile.dir}">
+			<fileset dir="${config.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- =================================================================== -->
+	<!-- 打war包-->
+	<!-- =================================================================== -->
+	<target name="package.war" depends="build">
+		<mkdir dir="${build.dir}" />
+		<copy todir="${build.dir}">
+			<fileset dir="${web.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</copy>		
+		<mkdir dir="${build.dir}/WEB-INF/classes" />
+		<copy todir="${build.dir}/WEB-INF/classes">
+			<fileset dir="${compile.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.dir}/WEB-INF/lib" />
+		<copy todir="${build.dir}/WEB-INF/lib">
+			<fileset dir="${lib.dir}" >
+				<exclude name="**/servlet-api.jar"/>
+			</fileset>
+		</copy>
+		<war warfile="${target.dir}/${project.name}.war" webxml="${build.dir}/WEB-INF/web.xml">
+			<lib dir="${build.dir}/WEB-INF/lib"/>
+			<fileset dir="${build.dir}" />
+		</war>
+	</target>
+	
+	<!-- =================================================================== -->
+	<!-- 发布到tomcat-->
+	<!-- =================================================================== -->
+	<target name="deploy" depends="package.war">
+		<copy todir="${deploy.dir}">
+			<fileset dir="${target.dir}" >
+				<include name="**/*.war"/>
+			</fileset>
+		</copy>
+	</target>
+
+</project>	
