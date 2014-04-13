@@ -100,4 +100,23 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/n
 		<servlet-name>pushlet_demo</servlet-name>
 		<url-pattern>/pushlet.demo</url-pattern>
 	</servlet-mapping>
+	<!--
+	======================================================== 
+		            for spring mvc
+	======================================================== 
+	<servlet>  
+        <servlet-name>spring-mvc</servlet-name>  
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	    <init-param>  
+	        <param-name>contextConfigLocation</param-name>  
+	        <param-value>classpath*:/applicationContext-spring-mvc.xml</param-value>  
+	    </init-param>  
+        <load-on-startup>2</load-on-startup>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>spring-mvc</servlet-name>  
+        <url-pattern>/</url-pattern>  
+    </servlet-mapping> 
+	-->	
+    
 </web-app>
