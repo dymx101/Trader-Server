@@ -19,7 +19,7 @@ public class PushletDemo implements Serializable{
 
 		@Override
 		protected Event pullEvent() {
-			 Event event = Event.createDataEvent("/guoguo/helloworld");
+			 Event event = Event.createDataEvent("/trader/pushlet.demo");
              String data= "hello,world 郭强 "+System.currentTimeMillis();
              try {
                   data=new String(data.getBytes("UTF-8"),"ISO-8859-1");

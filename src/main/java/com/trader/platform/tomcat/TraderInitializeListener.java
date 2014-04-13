@@ -1,6 +1,21 @@
 package com.trader.platform.tomcat;
 
-public class TraderInitializeListener {
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+public class TraderInitializeListener implements ServletContextListener {
+
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

@@ -10,7 +10,7 @@
 <base href="<%=request.getContextPath()%>">
 </head>
 <body>
-      <script type="text/javascript" src="lib/ajax-pushlet-client.js"></script>
+      <script type="text/javascript" src="script/ajax-pushlet-client.js"></script>
       <div id="guoguo"></div>
       <script type="text/javascript">
           //初始化pushlet客户端
@@ -18,7 +18,7 @@
         //设定运行时显示调试信息，不需要时，直接删掉即可
            PL.setDebug(true);
         //设定监听主题：/guoguo/helloworld，与服务器端的主题完全一致
-           PL.joinListen('/guoguo/helloworld');
+           PL.joinListen('/trader/pushlet.demo');
         //接收到事件后，显示服务器信息
            function onData(event) {
                  guoguo.innerText=(event.get("hw"));
