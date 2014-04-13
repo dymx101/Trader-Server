@@ -10,3 +10,14 @@ target/
 .classpath
 .settings/
 
+
+build/build.properties
+
+*.properties
+
+build/build.properties
+.gitignore
+
+build/build.properties
+
+*.properties
