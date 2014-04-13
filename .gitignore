@@ -9,11 +9,7 @@ target/
 .project
 .classpath
 .settings/
-
-
 build/build.properties
 
-*.properties
 
-.gitignore
 
