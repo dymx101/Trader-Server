@@ -20,7 +20,7 @@ public class PushletDemo implements Serializable{
 		@Override
 		protected Event pullEvent() {
 			 Event event = Event.createDataEvent("/trader/pushlet.demo");
-             String data= "hello,world 郭强 "+System.currentTimeMillis();
+             String data= "hello,world guoqiang "+System.currentTimeMillis();
              try {
                   data=new String(data.getBytes("UTF-8"),"ISO-8859-1");
              } catch (UnsupportedEncodingException e) {
